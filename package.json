@@ -1,0 +1,16 @@
+{
+  "name": "gitbook-circleci-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An example to build a GitBook document with CircleCI",
+  "main": "index.js",
+  "scripts": {
+    "init": "gitbook init",
+    "start": "gitbook serve",
+    "build": "gitbook build",
+    "deploy": "npm run build"
+  },
+  "devDependencies": {
+    "gitbook-cli": "^2.3.0"
+  }
+}

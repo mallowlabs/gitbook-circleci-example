@@ -6,7 +6,7 @@ dependencies:
     - ~/calibre-bin
   post:
     - |
-      if [! -e ~/calibre-bin/calibre/ebook-convert ]; then
+      if [ ! -e ~/calibre-bin/calibre/ebook-convert ]; then
         wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('~/calibre-bin', True)"
       fi
     - npm install

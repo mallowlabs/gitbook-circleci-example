@@ -10,11 +10,11 @@ dependencies:
       if [ ! -e ~/calibre-bin/calibre/ebook-convert ]; then
         wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('~/calibre-bin', True)"
       fi
-    - npm install
     - |
       if [ ! -e ~/.fonts/NotoSansCJKjp-Regular.otf ]; then
         wget -nv https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip && unzip NotoSansCJKjp-hinted.zip && mkdir -p ~/.fonts && mv *otf ~/.fonts && fc-cache -f -v && rm -f NotoSansCJKjp-hinted.zip LICENSE_OFL.txt README
       fi
+    - npm install
 test:
   override:
     - ln -s ~/calibre-bin/calibre/ebook-convert node_modules/.bin/ebook-convert

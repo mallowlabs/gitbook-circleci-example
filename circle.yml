@@ -4,12 +4,17 @@ general:
 dependencies:
   cache_directories:
     - ~/calibre-bin
+    - ~/.fonts
   post:
     - |
       if [ ! -e ~/calibre-bin/calibre/ebook-convert ]; then
         wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('~/calibre-bin', True)"
       fi
     - npm install
+    - |
+      if [ ! -e ~/.fonts/NotoSansCJKjp-Regular.otf ]; then
+        wget -nv https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip && unzip NotoSansCJKjp-hinted.zip && mkdir -p ~/.fonts && cp *otf *otc ~/.fonts && fc-cache -f -v
+      fi
 test:
   override:
     - ln -s ~/calibre-bin/calibre/ebook-convert node_modules/.bin/ebook-convert

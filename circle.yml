@@ -12,6 +12,5 @@ dependencies:
     - npm install
 test:
   override:
-    - export PATH="~/calibre-bin/calibre/:$PATH"
     - npm run build
 

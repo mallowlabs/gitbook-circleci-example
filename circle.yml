@@ -2,11 +2,16 @@ general:
   artifacts:
     - "_book"
 dependencies:
+  cache_directories:
+    - ~/calibre-bin
   post:
-    - wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('~/calibre-bin', True)"
+    - |
+      if [! -e ~/calibre-bin/calibre/ebook-convert ]; then
+        wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('~/calibre-bin', True)"
+      fi
     - npm install
 test:
   override:
-    - export PATH="~/calibre-bin:$PATH"
+    - export PATH="~/calibre-bin/calibre/:$PATH"
     - npm run build
 

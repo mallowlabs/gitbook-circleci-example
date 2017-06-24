@@ -7,7 +7,7 @@
   "scripts": {
     "init": "gitbook init",
     "start": "gitbook serve",
-    "build": "gitbook build && gitbook pdf . ./_book/book.pdf",
+    "build": "gitbook install && gitbook build && gitbook pdf . ./_book/book.pdf",
     "deploy": "npm run build"
   },
   "devDependencies": {

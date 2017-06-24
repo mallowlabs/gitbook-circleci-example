@@ -3,8 +3,10 @@ general:
     - "_book"
 dependencies:
   post:
+    - wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('~/calibre-bin', True)"
     - npm install
 test:
   override:
+    - export PATH="~/calibre-bin:$PATH"
     - npm run build
 

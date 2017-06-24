@@ -1,0 +1,10 @@
+
+{
+  "pdf": {
+    "fontFamily": "Noto Sans Japanese"
+  },
+  "plugins": ["search", "lunr", "search-languages@https://github.com/banjun/gitbook-plugin-search-languages.git#186e9101eb2328f4e013f339460c286a4ebfef7b"],
+  "pluginsConfig": {
+    "search_languages": {"lang": "jp"}
+  }
+}

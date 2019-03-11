@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:2.7-node
+    steps:
+      - checkout
+      - run:
+          name: install calibre
+          command: |
+            wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin install_dir=~/calibre-bin isolated=y
+      - run:
+          name: install NotoSans
+          command: |
+            wget -nv https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip
+            unzip NotoSansCJKjp-hinted.zip
+            mkdir -p ~/.fonts
+            mv *otf ~/.fonts
+            fc-cache -f -v
+            rm -f NotoSansCJKjp-hinted.zip LICENSE_OFL.txt README
+      - run:
+          name: build
+          command: |
+            npm install
+            ln -s ~/calibre-bin/calibre/ebook-convert node_modules/.bin/ebook-convert
+            npm run build
+

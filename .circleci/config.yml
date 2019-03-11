@@ -24,4 +24,6 @@ jobs:
             npm install
             ln -s ~/calibre-bin/calibre/ebook-convert node_modules/.bin/ebook-convert
             npm run build
+      - store_artifacts:
+          path: _book
 
